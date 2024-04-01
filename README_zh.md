@@ -43,37 +43,6 @@ type XX struct {
 }
 ```
 
-**对象嵌套自身处理方式：**
-
-生成swagger文档后在需手动为嵌套字段添加example，map元素嵌套结构体自身示例如下：
-```
-type RuleOption struct {
-MatchSrc   string                 `json:"match_src,omitempty"`
-SubOptions map[string]*RuleOption `json:"sub_options,omitempty"`
-}
-## 修改swagger文档中，为sub_options添加example
-api.RuleOption:
-    type: object
-    properties:
-      match_src:
-        type: string
-      name:
-        type: string
-      ops:
-        type: array
-        items:
-          type: string
-      sub_options:
-        type: object
-        additionalProperties:
-          $ref: '#/definitions/api.RuleOption'
-          example: {"match_src":"string","name":"string","ops":"string","sub_options":{},"values":["string"]}
-      values:
-        type: array
-        items:
-          type: string
-```
-
 **Tip:** 从 `v1.2.0` 开始，低版本不再兼容。为了兼容大部分的web框架，整体架构做了很大的改动。
 
 ## 默认 Swagger UI 服务器
