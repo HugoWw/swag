@@ -206,6 +206,27 @@ type Model struct {
 	String string `json:"s"`
 }
 
+func TestBodyR(t *testing.T) {
+	expected := swag.Parameter{
+		In:       "body",
+		Name:     "body",
+		Required: true,
+		Schema: &swag.Schema{
+			Ref:       "#/definitions/github.com_zc2638_swag_endpoint.Model",
+			Prototype: reflect.TypeOf(Model{}),
+		},
+	}
+
+	e := New(
+		"get", "/",
+		Summary("get thing"),
+		BodyR(Model{}),
+	)
+
+	assert.Equal(t, 1, len(e.Parameters))
+	assert.Equal(t, expected, e.Parameters[0])
+}
+
 func TestBody(t *testing.T) {
 	expected := swag.Parameter{
 		In:          "body",
@@ -213,7 +234,7 @@ func TestBody(t *testing.T) {
 		Description: "the description",
 		Required:    true,
 		Schema: &swag.Schema{
-			Ref:       "#/definitions/endpoint.Model",
+			Ref:       "#/definitions/github.com_zc2638_swag_endpoint.Model",
 			Prototype: reflect.TypeOf(Model{}),
 		},
 	}
@@ -232,7 +253,7 @@ func TestResponse(t *testing.T) {
 	expected := swag.Response{
 		Description: "successful",
 		Schema: &swag.Schema{
-			Ref:       "#/definitions/endpoint.Model",
+			Ref:       "#/definitions/github.com_zc2638_swag_endpoint.Model",
 			Prototype: Model{},
 		},
 	}
