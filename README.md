@@ -24,6 +24,25 @@ Golang 1.16+
 go get -u github.com/zc2638/swag@v1.4.3
 ```
 
+## Use note:
+The time.time type uses jsonTag to parse it into a string type
+```go
+type XXX struct{
+  Now time.Time `json:",string"`
+}
+```
+
+The incompatibility parse is as follows:
+```go
+type XX struct {
+   Attributes1 []map[string]string //It is recommended to replace map with struct
+   Attributes2 [][]string
+   Attributes3 map[string][][]string
+   Attributes4 map[string][]map[string]string //It is recommended to replace map with struct
+   Attributes5 map[string]XX //nested self-resolution of structs is not supported
+}
+```
+
 **Tip:** As of `v1.2.0`, lower versions are no longer compatible. In order to be compatible with most web frameworks,
 the overall architecture has been greatly changed.
 
