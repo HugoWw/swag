@@ -33,32 +33,32 @@ type Anonymous struct {
 }
 
 type Pet struct {
-	//Friend          Person    `json:"friend" desc:"description short expression"`
-	//Friends         []Person  `json:"friends" description:"long desc"`
-	//Pointer         *Person   `json:"pointer" required:"true"`
-	//Pointers        []*Person `json:"pointers"`
-	//Int             int
-	//IntArray        []int
-	//Int64Array      []int64
-	//String          string
-	//StringSecondWay string `json:"StringSecondWay,string"`
-	//StringArray     []string
-	//Float           float32
-	//FloatArray      []float32
-	//Double          float64
-	//DoubleArray     []float64
-	//Bool            bool
-	//Enum            string `json:"enum" enum:"a,b,c" example:"b"`
-	//Anonymous
-	//MapSlicePtr       map[string][]*string
-	//MapSlice          map[string][]string
+	Friend          Person    `json:"friend" desc:"description short expression"`
+	Friends         []Person  `json:"friends" description:"long desc"`
+	Pointer         *Person   `json:"pointer" required:"true"`
+	Pointers        []*Person `json:"pointers"`
+	Int             int
+	IntArray        []int
+	Int64Array      []int64
+	String          string
+	StringSecondWay string `json:"StringSecondWay,string"`
+	StringArray     []string
+	Float           float32
+	FloatArray      []float32
+	Double          float64
+	DoubleArray     []float64
+	Bool            bool
+	Enum            string `json:"enum" enum:"a,b,c" example:"b"`
+	Anonymous
+	MapSlicePtr       map[string][]*string
+	MapSlice          map[string][]string
 	MapSliceStructPtr map[string][]*Person
-	//MapSliceStruct    map[string][]Person
-	SliceStructPtr *[]*Person
-	//SliceStruct    *[]Person
-	//SliceStringPtr *[]*string
-	//SliceString    *[]string
-	//MapNestOptions *MapObj `json:"map_nest_options,omitempty"`
+	MapSliceStruct    map[string][]Person
+	SliceStructPtr    *[]*Person
+	SliceStruct       *[]Person
+	SliceStringPtr    *[]*string
+	SliceString       *[]string
+	MapNestOptions    *MapObj `json:"map_nest_options,omitempty"`
 }
 
 type MapObj struct {
@@ -160,12 +160,4 @@ func TestMakeSchemaType(t *testing.T) {
 
 	objSchema := MakeSchema(struct{}{})
 	assert.Equal(t, "", objSchema.Type, "expect array type but get %s", objSchema.Type)
-}
-
-func TestPetJson(t *testing.T) {
-	v := define(Pet{})
-
-	b, _ := json.MarshalIndent(v, "", "\t")
-
-	fmt.Println(string(b))
 }
