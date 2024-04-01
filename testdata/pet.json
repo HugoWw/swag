@@ -1,5 +1,6 @@
 {
   "swag.MapObj": {
+  "swag.MapObj": {
     "type": "object",
     "properties": {
       "rule_options": {
@@ -47,7 +48,7 @@
       }
     }
   },
-  "swag.Pet": {
+  "github.com_zc2638_swag.Pet": {
     "type": "object",
     "required": [
       "pointer"
@@ -188,19 +189,19 @@
         "type": "array",
         "description": "long desc",
         "items": {
-          "$ref": "#/definitions/swag.Person"
+          "$ref": "#/definitions/github.com_zc2638_swag.Person"
         }
       },
       "map_nest_options": {
         "$ref": "#/definitions/swag.MapObj"
       },
       "pointer": {
-        "$ref": "#/definitions/swag.Person"
+        "$ref": "#/definitions/github.com_zc2638_swag.Person"
       },
       "pointers": {
         "type": "array",
         "items": {
-          "$ref": "#/definitions/swag.Person"
+          "$ref": "#/definitions/github.com_zc2638_swag.Person"
         }
       }
     }
