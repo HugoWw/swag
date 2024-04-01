@@ -45,6 +45,12 @@ type Context struct {
 	PathParams map[string]string
 }
 
+var SchemaMap = map[string]string{
+	"time.Time":     "string",
+	"time.Duration": "integer",
+	"json.Number":   "number",
+}
+
 // AddURLParamsToContext returns a copy of parent in which the context value is set
 func AddURLParamsToContext(parent context.Context, params map[string]string) context.Context {
 	routeVal := parent.Value(RouteContextKey)

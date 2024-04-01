@@ -80,10 +80,9 @@ func inspect(t reflect.Type, jsonTag string) Property {
 		// Example:
 		//    t ==> *[]*Struct|Struct|*string|string
 		//    p.GoType.Kind() ==> []*Struct|Struct|*string|string
-		if p.GoType.Kind() == reflect.Slice {
-			//p.GoType ==> *Struct|Struct|*string|string
-			p.GoType = p.GoType.Elem()
-		}
+
+		//p.GoType ==> *Struct|Struct|*string|string
+		p.GoType = p.GoType.Elem()
 
 		switch p.GoType.Kind() {
 		case reflect.Ptr:
@@ -246,27 +245,21 @@ func jsonSchemaType(modelName string, modelType reflect.Type) string {
 		modelKind = modelType.Kind()
 	}
 
-	schemaMap := map[string]string{
-		"time.Time":     "string",
-		"time.Duration": "integer",
-		"json.Number":   "number",
-	}
-
-	if mapped, ok := schemaMap[modelName]; ok {
+	if mapped, ok := types.SchemaMap[modelName]; ok {
 		return mapped
 	}
 
 	// check if original type is primitive
 	switch modelKind {
 	case reflect.Bool:
-		return "boolean"
+		return types.Boolean.String()
 	case reflect.Float32, reflect.Float64:
-		return "number"
+		return types.Number.String()
 	case reflect.Int, reflect.Int8, reflect.Int16, reflect.Int32, reflect.Int64,
 		reflect.Uint, reflect.Uint8, reflect.Uint16, reflect.Uint32, reflect.Uint64:
-		return "integer"
+		return types.Integer.String()
 	case reflect.String:
-		return "string"
+		return types.String.String()
 	}
 
 	return modelName // use as is (custom or struct)
