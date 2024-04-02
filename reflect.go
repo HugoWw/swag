@@ -203,6 +203,9 @@ func isSliceOrArryType(t reflect.Kind) bool {
 	return t == reflect.Slice || t == reflect.Array
 }
 
+// isByteArrayType
+// Check if the data is of slice or array type
+// while simultaneously verifying if the element type is of byte type(in go defined "type byte=uint8").
 func isByteArrayType(t reflect.Type) bool {
 	return (t.Kind() == reflect.Slice || t.Kind() == reflect.Array) &&
 		t.Elem().Kind() == reflect.Uint8
