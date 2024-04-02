@@ -1,17 +1,16 @@
 {
-  "swag.MapObj": {
-  "swag.MapObj": {
+  "github.com_zc2638_swag.MapObj": {
     "type": "object",
     "properties": {
       "rule_options": {
         "type": "object",
         "additionalProperties": {
-          "$ref": "#/definitions/swag.MapOption"
+          "$ref": "#/definitions/github.com_zc2638_swag.MapOption"
         }
       }
     }
   },
-  "swag.MapOption": {
+  "github.com_zc2638_swag.MapOption": {
     "type": "object",
     "properties": {
       "match_src": {
@@ -29,7 +28,7 @@
       "sub_options": {
         "type": "object",
         "additionalProperties": {
-          "$ref": "#/definitions/swag.MapOption"
+          "$ref": "#/definitions/github.com_zc2638_swag.MapOption"
         }
       },
       "values": {
@@ -40,7 +39,7 @@
       }
     }
   },
-  "swag.Person": {
+  "github.com_zc2638_swag.Person": {
     "type": "object",
     "properties": {
       "First": {
@@ -123,7 +122,7 @@
         "additionalProperties": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/swag.Person"
+            "$ref": "#/definitions/github.com_zc2638_swag.Person"
           }
         }
       },
@@ -132,7 +131,7 @@
         "additionalProperties": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/swag.Person"
+            "$ref": "#/definitions/github.com_zc2638_swag.Person"
           }
         }
       },
@@ -151,13 +150,13 @@
       "SliceStruct": {
         "type": "array",
         "items": {
-          "$ref": "#/definitions/swag.Person"
+          "$ref": "#/definitions/github.com_zc2638_swag.Person"
         }
       },
       "SliceStructPtr": {
         "type": "array",
         "items": {
-          "$ref": "#/definitions/swag.Person"
+          "$ref": "#/definitions/github.com_zc2638_swag.Person"
         }
       },
       "String": {
@@ -183,7 +182,7 @@
       },
       "friend": {
         "description": "description short expression",
-        "$ref": "#/definitions/swag.Person"
+        "$ref": "#/definitions/github.com_zc2638_swag.Person"
       },
       "friends": {
         "type": "array",
@@ -193,7 +192,7 @@
         }
       },
       "map_nest_options": {
-        "$ref": "#/definitions/swag.MapObj"
+        "$ref": "#/definitions/github.com_zc2638_swag.MapObj"
       },
       "pointer": {
         "$ref": "#/definitions/github.com_zc2638_swag.Person"
