@@ -32,15 +32,19 @@ type XXX struct{
 }
 ```
 
-The incompatibility parse is as follows:
+The compatibility is resolved as follows：
 ```go
-type XX struct {
-   Attributes1 []map[string]string //It is recommended to replace map with struct
-   Attributes2 [][]string
-   Attributes3 map[string][][]string
-   Attributes4 map[string][]map[string]string //It is recommended to replace map with struct
-   Attributes5 map[string]XX //nested self-resolution of structs is not supported
+type xxx struct {
+    MapSlicePtr       map[string][]*string
+    MapSlice          map[string][]string
+    MapSliceStructPtr map[string][]*Person
+    MapSliceStruct    map[string][]Person
+    SliceStructPtr    *[]*Person
+    SliceStruct       *[]Person
+    SliceStringPtr    *[]*string
+    SliceString       *[]string
 }
+
 ```
 
 **Tip:** As of `v1.2.0`, lower versions are no longer compatible. In order to be compatible with most web frameworks,

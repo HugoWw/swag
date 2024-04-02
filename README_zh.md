@@ -32,15 +32,19 @@ type XXX struct{
 }
 ```
 
-不兼容如下解析：
+兼容的解析如下：
 ```go
-type XX struct {
-   Attributes1 []map[string]string //建议把map替换成struct
-   Attributes2 [][]string
-   Attributes3 map[string][][]string
-   Attributes4 map[string][]map[string]string //建议把map替换成struct
-   Attributes5 map[string]XX //不支持对结构体嵌套自身解析
+type xxx struct {
+    MapSlicePtr       map[string][]*string
+    MapSlice          map[string][]string
+    MapSliceStructPtr map[string][]*Person
+    MapSliceStruct    map[string][]Person
+    SliceStructPtr    *[]*Person
+    SliceStruct       *[]Person
+    SliceStringPtr    *[]*string
+    SliceString       *[]string
 }
+
 ```
 
 **Tip:** 从 `v1.2.0` 开始，低版本不再兼容。为了兼容大部分的web框架，整体架构做了很大的改动。

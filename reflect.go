@@ -233,7 +233,8 @@ func isPrimitiveType(modelName string, modelType reflect.Type) bool {
 		return false
 	}
 
-	return strings.Contains("time.Time time.Duration json.Number", modelName)
+	_, ok := types.SchemaMap[modelName]
+	return ok
 }
 
 func jsonSchemaType(modelName string, modelType reflect.Type) string {
